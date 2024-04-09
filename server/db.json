@@ -1,0 +1,22 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "name": "Article 1",
+      "description": "This is article 1",
+      "price": 10.40,
+      "tax_percentage": 19
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "articles": [
+        {
+          "article_id": "1",
+          "quantity": 4
+        }
+      ]
+    }
+  ]
+}
