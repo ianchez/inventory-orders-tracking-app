@@ -1,0 +1,16 @@
+services:
+  client:
+    build: ./client
+    environment:
+      - BROWSER=none
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/usr/src/app
