@@ -6,6 +6,9 @@ import {
 // styles
 import './App.css';
 
+// constants
+import { SCREENS } from './constants/router';
+
 // screens
 import { HomeScreen } from './screens/HomeScreen';
 import { ErrorScreen } from './screens/ErrorScreen';
@@ -15,16 +18,16 @@ import { OrdersScreen } from './screens/OrdersScreen';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: SCREENS.HOME,
     element: <HomeScreen />,
     errorElement: <ErrorScreen />,
   },
   {
-    path: "/articles",
+    path: SCREENS.ARTICLES,
     element: <ArticlesScreen />,
   },
   {
-    path: "/orders",
+    path: SCREENS.ORDERS,
     element: <OrdersScreen />,
   },
 ]);
