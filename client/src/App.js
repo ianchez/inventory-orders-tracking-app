@@ -1,22 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useArticles } from './adapters/primary/useArticles';
+import { useOrders } from './adapters/primary/useOrders';
 
 function App() {
+  const { length: articlesCount } = useArticles();
+  const { length: ordersCount } = useOrders();
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Inventory</h1>
+
+        <div className='card'>
+          <h3>Articles</h3>
+          <p>Total: {articlesCount}</p>
+        </div>
+        <div className='card'>
+          <h3>Orders</h3>
+          <p>Total: {articlesCount}</p>
+        </div>
       </header>
     </div>
   );

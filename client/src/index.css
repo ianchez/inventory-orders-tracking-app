@@ -6,3 +6,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+h3, p {
+  margin: 0;
+}
+
+p {
+  font-size: calc(6px + 1.4vmin);
+  color: #c7c7c7;
+}
+
+ul {
+  font-size: calc(4px + 1.4vmin);
+}
+
+li {
+  text-align: left;
+}
+
+.card {
+  background-color: rgba(256, 256, 256, 0.02);
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid rgba(256, 256, 256, 0.6);
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px 0 rgba(256, 256, 256, 0.2);
+  width: 80%;
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid rgba(256, 256, 256, 0.8);
+}
+
+.pressable:hover {
+  cursor: pointer;
+}

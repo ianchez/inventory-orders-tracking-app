@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
-import { fetchOrders } from '../../domain/InventoryService';
+import { useOrders } from '../adapters/primary/useOrders';
 
 export const useOrdersList = () => {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    fetchOrders().then(setOrders);
-  }, []);
+  const { orders } = useOrders();
 
   return (
     <ul>
