@@ -24,6 +24,21 @@ li {
   text-align: left;
 }
 
+i {
+  color: crimson
+}
+
+.screen {
+  background-color: #21242b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(6px + 2vmin);
+  color: white;
+}
+
 .card {
   background-color: rgba(256, 256, 256, 0.02);
   margin: 20px;
@@ -36,7 +51,8 @@ li {
 
 .card:hover {
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid rgba(256, 256, 256, 0.8);
+  border: solid rgba(256, 256, 256, 0.8);
+  border-width: 2px 4px;
 }
 
 .pressable:hover {
