@@ -1,6 +1,6 @@
 import { useArticles } from '../adapters/primary/useArticles';
 
-export const useArticlesList = () => {
+export const ArticlesList = () => {
   const { articles } = useArticles(); 
 
   return (

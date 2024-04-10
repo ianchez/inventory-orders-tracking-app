@@ -1,7 +1,10 @@
+import { ArticlesList } from '../components/ArticlesList';
+
 export const ArticlesScreen = () => {
   return (
     <div className='screen'>
-        <h1>Articles</h1>
+      <h2>Articles</h2>
+      <ArticlesList />
     </div>
   );
 }

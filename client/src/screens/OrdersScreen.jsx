@@ -1,7 +1,10 @@
+import { OrdersList } from "../components/OrdersList";
+
 export const OrdersScreen = () => {
   return (
     <div className='screen'>
-        <h1>Orders</h1>
+        <h2>Orders</h2>
+        <OrdersList />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useOrders } from '../adapters/primary/useOrders';
 
-export const useOrdersList = () => {
+export const OrdersList = () => {
   const { orders } = useOrders();
 
   return (
