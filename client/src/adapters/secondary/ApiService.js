@@ -7,6 +7,7 @@ const ApiService = {
       return response.json();
     } catch (error) {
       console.error("Failed to fetch articles:", error);
+      return [];
     }
   },
 
@@ -16,6 +17,7 @@ const ApiService = {
       return response.json();
     } catch (error) {
       console.error("Failed to fetch articles:", error);
+      return [];
     }
   },
 
@@ -31,6 +33,7 @@ const ApiService = {
       return response.json();
     } catch (error) {
       console.error("Failed to create article:", error);
+      return null;
     }
   },
 
@@ -46,6 +49,7 @@ const ApiService = {
       return response.json();
     } catch (error) {
       console.error("Failed to create order:", error);
+      return null;
     }
   }
 };
