@@ -32,7 +32,8 @@ export const addArticle = async (name, quantity) => {
   }
 };
 
-export const updateArticle = async ({id, name, description, price, taxPercentage}) => {
-  const response = await ApiService.updateArticle({ id, name, description, price, taxPercentage });
-  return response;
-}
+export const updateArticle = async (articleData) =>
+  await ApiService.updateArticle(articleData);
+
+export const updateOrder = async (orderData) => 
+  await ApiService.updateOrder(orderData);

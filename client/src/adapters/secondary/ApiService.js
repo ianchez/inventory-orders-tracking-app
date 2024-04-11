@@ -67,6 +67,22 @@ const ApiService = {
       console.error("Failed to update article:", error);
       return null;
     }
+  },
+
+  async updateOrder(orderData) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/orders/${orderData.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+      return response.json();
+    } catch (error) {
+      console.error("Failed to update order:", error);
+      return null;
+    }
   }
 };
 
