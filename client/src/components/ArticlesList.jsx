@@ -6,8 +6,10 @@ export const ArticlesList = () => {
   return (
     <ul>
       {articles.map(article => (
-        <li key={article.id}>
-          {article.name} - Quantity: {article.quantity}
+        <li key={article.id} className='pressable'>
+          <h4>ID: {article.id} | {article.name}</h4>
+          Price: ${article.price} | Tax: {article.taxPercentage}%<br/>
+          Description: {article.description}
         </li>
       ))}
     </ul>

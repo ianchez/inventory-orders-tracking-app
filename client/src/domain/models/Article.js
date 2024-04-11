@@ -4,6 +4,6 @@ export default class Article {
     this.name = name;
     this.description = description;
     this.price = price;
-    this.tax_percentage = taxPercentage;
+    this.taxPercentage = taxPercentage;
   }
 }
