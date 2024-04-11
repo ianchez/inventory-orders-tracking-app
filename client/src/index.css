@@ -7,6 +7,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: #4094d4;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: calc(2px + 1.2vmin);
+}
+
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
@@ -14,6 +22,21 @@ h1, h2, h3, h4, h5, h6 {
 h3, h4, p {
   margin: 0;
   margin-bottom: 6px;
+}
+
+i {
+  color: crimson
+}
+
+li {
+  background-color: #3dd5ff19;
+  padding: 8px 20px;
+  text-align: left;
+  width: 100%;
+}
+
+li:hover {
+  background-color: #3dd5ff22;
 }
 
 p {
@@ -34,20 +57,6 @@ ul ul {
   width: 100%;
 }
 
-li {
-  background-color: #3dd5ff19;
-  padding: 8px 20px;
-  text-align: left;
-  width: 100%;
-}
-
-li:hover {
-  background-color: #3dd5ff22;
-}
-
-i {
-  color: crimson
-}
 
 .screen {
   background-color: #21242b;
@@ -79,12 +88,4 @@ i {
 
 .pressable:hover {
   cursor: pointer;
-}
-
-.link {
-  color: #4094d4;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: calc(2px + 1.2vmin);
 }
