@@ -7,8 +7,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h3, p {
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+h3, h4, p {
   margin: 0;
+  margin-bottom: 6px;
 }
 
 p {
@@ -17,11 +22,27 @@ p {
 }
 
 ul {
+  display: flex;
   font-size: calc(4px + 1.4vmin);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+}
+
+ul ul {
+  width: 100%;
 }
 
 li {
+  background-color: #3dd5ff19;
+  padding: 8px 20px;
   text-align: left;
+  width: 100%;
+}
+
+li:hover {
+  background-color: #3dd5ff22;
 }
 
 i {
@@ -37,6 +58,7 @@ i {
   justify-content: flex-start;
   font-size: calc(6px + 2vmin);
   color: white;
+  padding-top: 20px;
 }
 
 .card {
@@ -57,4 +79,12 @@ i {
 
 .pressable:hover {
   cursor: pointer;
+}
+
+.link {
+  color: #4094d4;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: calc(2px + 1.2vmin);
 }
