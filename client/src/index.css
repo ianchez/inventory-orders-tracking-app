@@ -15,6 +15,23 @@ a {
   font-size: calc(2px + 1.2vmin);
 }
 
+button {
+  background-color: #3dd5ff19;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  font-size: calc(6px + 1.4vmin);
+  margin: 2px 0;
+  padding: 8px 20px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #3dd5ff3a;
+  cursor: pointer;
+}
+
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
@@ -25,9 +42,42 @@ h3, h4, p {
   margin-bottom: 6px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+}
+
 i {
   color: crimson;
 }
+
+input {
+  background-color: #3dd5ff19;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  font-size: calc(6px + 1.4vmin);
+  margin: 2px 0;
+  padding: 8px 20px;
+  width: 100%;
+}
+
+input:hover {
+  background-color: #3dd5ff22;
+}
+
+label {
+  color: #c7c7c7;
+  font-size: calc(4px + 1.4vmin);
+  text-align: left;
+  margin: 0;
+  margin-bottom: 6px;
+  width: 100%;
+}	
 
 li {
   background-color: #3dd5ff19;
@@ -44,6 +94,20 @@ li:hover {
 p {
   font-size: calc(6px + 1.4vmin);
   color: #c7c7c7;
+}
+
+textarea {
+  background-color: #3dd5ff19;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  font-size: calc(6px + 1.4vmin);
+  margin: 0;
+  padding: 8px 16px;
+  resize: none;
+  min-height: 200px;
+  width: 100%;
 }
 
 ul {
