@@ -24,4 +24,6 @@ export const SCREENS = {
 export const routeBuilder = {
   ARTICLE: (id = "") => SCREENS.ARTICLE_ITEM.PATH.replace(':id', id),
   ORDER: (id = "") => SCREENS.ORDER_ITEM.PATH.replace(':id', id),
+  NEW_ARTICLE: () => SCREENS.ARTICLES.PATH + '/new',
+  NEW_ORDER: () => SCREENS.ORDERS.PATH + '/new',
 };

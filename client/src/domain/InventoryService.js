@@ -23,17 +23,44 @@ export const fetchOrders = async () => {
     })) ?? [];
 };
 
-export const addArticle = async (name, quantity) => {
-  try {
-    const newArticle = await ApiService.createArticle({ name, quantity });
-    return new Article(newArticle.id, newArticle.name, newArticle.quantity);
-  } catch (error) {
-    console.error("Failed to add article:", error);
-  }
+export const createArticle = async (newArticleData) => {
+  const articles = await fetchArticles();
+  const articlesIds = articles
+    .map(article => parseInt(article.id))
+    .filter(id => !isNaN(id));
+
+  const newId = articles.length > 0
+    ? Math.max(...articlesIds) + 1
+    : 1;
+
+  const newArticle = {
+    ...newArticleData,
+    id: newId.toString(),
+    price: parseFloat(newArticleData.price),
+    taxPercentage: parseFloat(newArticleData.taxPercentage),
+  };
+
+  const response = await ApiService.createArticle(newArticle);
+  return new Article(response);
 };
 
-export const updateArticle = async (articleData) =>
-  await ApiService.updateArticle(articleData);
+export const createOrder = async (newOrderData) => {
+  const newOrder = await ApiService.createOrder(newOrderData);
+  return new Order(newOrder);
+};
 
-export const updateOrder = async (orderData) => 
-  await ApiService.updateOrder(orderData);
+export const updateArticle = async (articleData) => {
+  articleData.price = parseFloat(articleData.price);
+  articleData.taxPercentage = parseFloat(articleData.taxPercentage);
+  const response = await ApiService.updateArticle(articleData);
+  return new Article(response);
+};
+
+export const updateOrder = async (orderData) => {
+  orderData.articles = orderData.articles.map(article => {
+    article.quantity = parseFloat(article.quantity);
+    return article;
+  });
+  const response = await ApiService.updateOrder(orderData);
+  return new Order(response);
+};
