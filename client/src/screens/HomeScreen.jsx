@@ -14,11 +14,11 @@ export const HomeScreen = () => {
     <div className='screen'>
         <h1>Inventory</h1>
 
-        <div className='card pressable' onClick={() => navigate(SCREENS.ARTICLES)}>
+        <div className='card pressable' onClick={() => navigate(SCREENS.ARTICLES.PATH)}>
           <h3>Articles</h3>
           <p>Total: {articlesCount}</p>
         </div>
-        <div className='card pressable' onClick={() => navigate(SCREENS.ORDERS)}>
+        <div className='card pressable' onClick={() => navigate(SCREENS.ORDERS.PATH)}>
           <h3>Orders</h3>
           <p>Total: {ordersCount}</p>
         </div>
