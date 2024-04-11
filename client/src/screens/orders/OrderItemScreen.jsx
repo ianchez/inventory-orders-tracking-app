@@ -101,7 +101,7 @@ export const OrderItemScreen = () => {
             key={article.id}
             className={`order-item ${(article.id === '' || article.quantity === 0) ? 'warning' : ''}`}
           >
-            <label style={{ width: "45%" }}>
+            <label className='w45'>
               Article ID:
               <input
                 type="number"
@@ -110,7 +110,7 @@ export const OrderItemScreen = () => {
                 onChange={(e) => handleChangeArticleId({ id: article.id, newId: e.target.value })}
               />
             </label>
-            <label style={{ width: "45%" }}>
+            <label className='w45'>
               Quantity:
               <input
                 type="number"
@@ -122,7 +122,7 @@ export const OrderItemScreen = () => {
           </li>
         ))}
       </ul>
-      <button type="submit" className='primary' disabled={disableButtons}>Update Order</button>
+      <button type="submit" className='primary' disabled={disableButtons}>UPDATE ORDER</button>
     </form>
   );
 
