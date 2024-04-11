@@ -20,16 +20,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3, h4, p {
+  box-sizing: border-box;
   margin: 0;
   margin-bottom: 6px;
 }
 
 i {
-  color: crimson
+  color: crimson;
 }
 
 li {
   background-color: #3dd5ff19;
+  box-sizing: border-box;
   padding: 8px 20px;
   text-align: left;
   width: 100%;
@@ -46,6 +48,7 @@ p {
 
 ul {
   display: flex;
+  flex-direction: column;
   font-size: calc(4px + 1.4vmin);
   list-style-type: none;
   padding: 0;
@@ -88,4 +91,12 @@ ul ul {
 
 .pressable:hover {
   cursor: pointer;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.subtitle {
+  text-align: left;
 }

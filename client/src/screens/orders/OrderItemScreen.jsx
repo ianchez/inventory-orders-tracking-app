@@ -10,7 +10,8 @@ export const OrderItemScreen = () => {
 
       <h2>{SCREENS.ORDER_ITEM.NAME}</h2>
       <h4>Order ID: {params.id}</h4>
-      <p>Items:</p>
+
+      <p className='subtitle w80'>Items:</p>
       <ul>
         <li>Item 1 | Quantity: 1</li>
         <li>Item 2 | Quantity: 2</li>
