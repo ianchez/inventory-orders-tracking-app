@@ -2,7 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { ROUTES } from "./constants/router";
+import { ROUTES } from "./routes";
 
 // styles
 import './App.css';
