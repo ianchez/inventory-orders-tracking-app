@@ -3,9 +3,9 @@
     {
       "id": "1",
       "name": "Article 1",
-      "description": "This is article 1",
-      "price": 10.40,
-      "tax_percentage": 19
+      "description": "This is article 121312",
+      "price": "10.3",
+      "taxPercentage": "19"
     }
   ],
   "orders": [
@@ -14,7 +14,7 @@
       "articles": [
         {
           "id": "1",
-          "quantity": 4
+          "quantity": "4"
         }
       ]
     }

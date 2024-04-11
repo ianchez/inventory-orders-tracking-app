@@ -10,7 +10,7 @@ export const fetchArticles = async () => {
       name: article.name,
       description: article.description,
       price: article.price,
-      taxPercentage: article.tax_percentage
+      taxPercentage: article.taxPercentage
     })) ?? [];
 };
 
@@ -31,3 +31,8 @@ export const addArticle = async (name, quantity) => {
     console.error("Failed to add article:", error);
   }
 };
+
+export const updateArticle = async ({id, name, description, price, taxPercentage}) => {
+  const response = await ApiService.updateArticle({ id, name, description, price, taxPercentage });
+  return response;
+}
