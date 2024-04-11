@@ -1,3 +1,18 @@
+:root {
+  --link-color: #4094d4;
+  --button-bg-color: #3dd5ff19;
+  --button-hover-bg-color: #3dd5ff3a;
+  --button-disabled-bg-color: #283c4219;
+  --button-disabled-hover-bg-color: #283c4233;
+  --button-disabled-border-color: #283c42;
+  --text-color-hover: white;
+  --input-bg-color: #3dd5ff19;
+  --icon-color: crimson;
+  --text-color: #c7c7c7;
+  --warning-color: rgba(218, 218, 65, 0.1);
+  --warning-color-hover: rgba(218, 218, 65, 0.2);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,7 +23,7 @@ body {
 }
 
 a {
-  color: #4094d4;
+  color: var(--link-color);
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
@@ -16,20 +31,28 @@ a {
 }
 
 button {
-  background-color: #3dd5ff19;
+  background-color: var(--button-bg-color);
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
-  color: white;
+  color: var(--text-color);
   font-size: calc(6px + 1.4vmin);
-  margin: 2px 0;
+  font-weight: bold;
+  margin: 10px 0px;
   padding: 8px 20px;
   width: 100%;
-}
-
-button:hover {
-  background-color: #3dd5ff3a;
+} & button:hover {
+  background-color: var(--button-hover-bg-color);
+  color: var(--text-color-hover);
   cursor: pointer;
+} & button:disabled {
+  background-color: var(--button-disabled-bg-color);
+  color: var(--text-color);
+  cursor: not-allowed;
+  border: 1px solid var(--button-disabled-border-color);
+} & button:disabled:hover {
+  background-color: var(--button-disabled-hover-bg-color);
+  border-color: var(--button-disabled-border-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,19 +70,20 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  max-width: 1000px;
   width: 80%;
 }
 
 i {
-  color: crimson;
+  color: var(--icon-color);
 }
 
 input {
-  background-color: #3dd5ff19;
+  background-color: var(--input-bg-color);
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
-  color: white;
+  color: var(--text-color-hover);
   font-size: calc(6px + 1.4vmin);
   margin: 2px 0;
   padding: 8px 20px;
@@ -71,7 +95,8 @@ input:hover {
 }
 
 label {
-  color: #c7c7c7;
+  color: var(--text-color);
+  display: inline-block;
   font-size: calc(4px + 1.4vmin);
   text-align: left;
   margin: 0;
@@ -93,7 +118,7 @@ li:hover {
 
 p {
   font-size: calc(6px + 1.4vmin);
-  color: #c7c7c7;
+  color: var(--text-color);
 }
 
 textarea {
@@ -101,7 +126,7 @@ textarea {
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
-  color: white;
+  color: var(--text-color-hover);
   font-size: calc(6px + 1.4vmin);
   margin: 0;
   padding: 8px 16px;
@@ -133,7 +158,7 @@ ul ul {
   align-items: center;
   justify-content: flex-start;
   font-size: calc(6px + 2vmin);
-  color: white;
+  color: var(--text-color-hover);
   padding-top: 20px;
 }
 
@@ -145,9 +170,7 @@ ul ul {
   border-radius: 4px;
   box-shadow: 1px 2px 4px 0 rgba(256, 256, 256, 0.2);
   width: 80%;
-}
-
-.card:hover {
+} & .card:hover {
   background-color: rgba(0, 0, 0, 0);
   border: solid rgba(256, 256, 256, 0.8);
   border-width: 2px 4px;
@@ -157,10 +180,48 @@ ul ul {
   cursor: pointer;
 }
 
-.w80 {
-  width: 80%;
+.primary {
+  padding: 16px 20px;
+  text-transform: uppercase;
+  background-color: #36ddf359;
+  color: #e5e5e5;
+} & .primary:hover {
+  background-color: #36f3eab5;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.secondary {
+  background-color: #00000000;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+} & .secondary:hover {
+  background-color: #5fb8a3;
+  border-color: #5fb8a3;
 }
 
 .subtitle {
   text-align: left;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.warning {
+  background-color: var(--warning-color);
+} & .warning:hover {
+  background-color: var(--warning-color-hover);
 }

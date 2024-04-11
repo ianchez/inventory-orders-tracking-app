@@ -29,25 +29,26 @@ export const ArticleItemScreen = () => {
     });
   }, [currentArticle]);
 
-  const handleUpdateArticle = (event) => {
+  const handleUpdateArticle = async (event) => {
     event.preventDefault();
-    updateArticle(formState);
+    const response = await updateArticle(formState);
+    setFormState(response);
   };
 
   const handleChange = (event) => {
-    setFormState({
-      ...formState,
+    setFormState((prevFormState) => ({
+      ...prevFormState,
       [event.target.name]: event.target.value,
-    });
+    }));
   };
 
-  const screenTitle = currentArticle ? currentArticle.name : 'Article not found';
+  const screenTitle = currentArticle ? formState.name : 'Article not found';
 
   const renderArticleForm = () => (
     <form onSubmit={handleUpdateArticle}>
       <label>
         ID: 
-        <input type="text" name="id" value={formState.id} onChange={handleChange} readOnly />
+        <input type="number" name="id" value={formState.id} onChange={handleChange} readOnly />
       </label><br />
       <label>
         Name: 
@@ -65,7 +66,7 @@ export const ArticleItemScreen = () => {
         Description: 
         <textarea name="description" value={formState.description} onChange={handleChange} />
       </label><br />
-      <button type="submit">Update Article</button>
+      <button type="submit" className='primary'>Update Article</button>
     </form>
   );
 
