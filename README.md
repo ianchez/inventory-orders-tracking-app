@@ -8,7 +8,7 @@
 3. Create a new `db.json` file in the **./server** folder with the following structure:
     ```json
     {
-      "products": [],
+      "articles": [],
       "orders": []
     }
     ```
