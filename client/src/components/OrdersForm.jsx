@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { InventoryContext } from '../context/inventory';
 import { createOrder, updateOrder } from '../domain/InventoryService';
 import { SCREENS } from '../constants/router';
 import { ArticleInput } from './ArticleInput';
@@ -14,6 +15,7 @@ const DEFAULT_FORM_STATE = {
 export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { refetch } = useContext(InventoryContext);
 
   const [formState, setFormState] = useState({
     id: currentOrder?.id || DEFAULT_FORM_STATE.ID,
@@ -28,6 +30,7 @@ export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
     if (!response.id) return;
 
     navigate(SCREENS.ORDERS.PATH);
+    refetch();
   };
 
   const handleAddArticle = () => {
