@@ -45,8 +45,25 @@ export const createArticle = async (newArticleData) => {
 };
 
 export const createOrder = async (newOrderData) => {
-  const newOrder = await ApiService.createOrder(newOrderData);
-  return new Order(newOrder);
+  const orders = await fetchOrders();
+  const ordersIds = orders
+    .map(order => parseInt(order.id))
+    .filter(id => !isNaN(id));
+  
+  const newId = orders.length > 0
+    ? Math.max(...ordersIds) + 1
+    : 1;
+
+  const newOrder = {
+    id: newId.toString(),
+    articles: newOrderData.articles.map(article => ({
+      ...article,
+      quantity: parseFloat(article.quantity),
+    })),
+  };
+
+  const response = await ApiService.createOrder(newOrder);
+  return new Order(response);
 };
 
 export const updateArticle = async (articleData) => {
