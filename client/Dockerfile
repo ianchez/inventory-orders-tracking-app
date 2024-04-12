@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:lts-iron
 
 # Set the working directory in the container
 WORKDIR /usr/src/app

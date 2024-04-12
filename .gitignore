@@ -107,6 +107,9 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
+# Server db file
+*db.json
+
 # Serverless directories
 .serverless/
 
