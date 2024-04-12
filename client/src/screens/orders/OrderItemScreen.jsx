@@ -105,13 +105,13 @@ export const OrderItemScreen = () => {
   const renderOrderForm = () => (
     <form onSubmit={submitAction}>
       {!isNewOrder && [
-        <h3>Order ID: {formState.id}</h3>,
-        <input className="w45" type="text" name="id" value={formState.id} readOnly disabled/>,
+        <h3>ID</h3>,
+        <input className="w20" type="text" name="id" value={formState.id} readOnly disabled/>,
         <br/>
       ]}
       
 
-      <h3>Articles:</h3>
+      <h4>Articles:</h4>
       <button
         type="button"
         className="secondary"

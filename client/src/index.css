@@ -100,7 +100,7 @@ input {
   color: var(--text-color-hover);
   font-size: calc(6px + 1.4vmin);
   margin: 2px 0;
-  padding: 8px 20px;
+  padding: 1.2vmin 2vmin;
   width: 100%;
 }
 
@@ -148,7 +148,7 @@ textarea {
   color: var(--text-color-hover);
   font-size: calc(6px + 1.4vmin);
   margin: 2px 0;
-  padding: 8px 16px;
+  padding: 1.2vmin 2vmin;
   resize: none;
   min-height: 200px;
   width: 100%;
@@ -226,6 +226,10 @@ ul ul {
 
 .subtitle {
   text-align: left;
+}
+
+.w20 {
+  width: 20%;
 }
 
 .w45 {
