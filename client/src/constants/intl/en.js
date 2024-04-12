@@ -61,6 +61,10 @@ const enDictionary = {
       id: 'ID:',
       articles: 'Articles:',
     },
+    title: {
+      new: 'New Order',
+      notFound: 'Order Not Found',
+    },
   },
   navigation: {
     backTo: 'Back to',

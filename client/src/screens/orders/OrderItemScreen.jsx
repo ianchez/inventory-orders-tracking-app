@@ -33,18 +33,14 @@ export const OrderItemScreen = () => {
     });
   }, [currentOrder]);
 
-  const handleCreateOrder = async (event) => {
+  const handleSubmitOrder = async (event) => {
     event.preventDefault();
-    const response = await createOrder(formState);
-    setFormState(DEFAULT_FORM_STATE);
-    navigate(SCREENS.ORDERS.PATH);
-  };
 
-  const handleUpdateOrder = async (event) => {
-    event.preventDefault();
-    const response = await updateOrder(formState);
-    // setFormState(DEFAULT_FORM_STATE);
-    // navigate(SCREENS.ORDERS.PATH);
+    const action = isNewOrder ? createOrder : updateOrder;
+    const response = await action(formState);
+    if (!response.id) return;
+
+    navigate(SCREENS.ORDERS.PATH);
   };
 
   const handleChangeArticleQuantity = ({ id, quantity }) => {
@@ -99,14 +95,18 @@ export const OrderItemScreen = () => {
   const disableButtons = formState.articles.some((article) => article.id === '' || article.quantity === '0');
   const addArticleButtonLabel = disableButtons ? t('articles.pleaseFill') : t('articles.add');
 
-  const screenTitle = isNewOrder ? t('orders.new') : t(`screens.${SCREENS.ORDER_ITEM.NAME}`);
+  const screenTitle =
+    isNewOrder
+      ? t('orders.title.new')
+      : currentOrder
+        ? t(`screens.${SCREENS.ORDER_ITEM.NAME}`)
+        : t('orders.title.notFound');
 
   const submitButtonLabel = isNewOrder ? t('orders.button.create') : t('orders.button.update');
   const disableSubmitButton = disableButtons || formState.articles.length < 1;
-  const submitAction = isNewOrder ? handleCreateOrder : handleUpdateOrder;
 
   const renderOrderForm = () => (
-    <form onSubmit={submitAction}>
+    <form onSubmit={handleSubmitOrder}>
       {!isNewOrder && [
         <h4>{t('orders.subtitle.id')}</h4>,
         <input className="w20" type="text" name="id" value={formState.id} readOnly disabled/>,
@@ -166,7 +166,7 @@ export const OrderItemScreen = () => {
       </Link>
 
       <h2>{screenTitle}</h2>
-      {renderOrderForm()}
+      {(isNewOrder || currentOrder) && renderOrderForm()}
     </div>
   );
 }

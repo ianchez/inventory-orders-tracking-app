@@ -61,6 +61,10 @@ const esDictionary = {
       id: 'ID:',
       articles: 'Artículos:',
     },
+    title: {
+      new: 'Nuevo Pedido',
+      notFound: 'Pedido No Encontrado',
+    },
   },
   navigation: {
     backTo: 'Volver a',
