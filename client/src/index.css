@@ -126,8 +126,10 @@ li {
   padding: 8px 20px;
   text-align: left;
   width: 100%;
-} & li:not(:last-child) {
-  margin-bottom: 8px;
+}
+
+li li:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 li:hover {
@@ -170,7 +172,6 @@ ul ul {
   width: 100%;
 }
 
-
 .screen {
   background-color: #21242b;
   min-height: 100vh;
@@ -196,10 +197,14 @@ ul ul {
   border: solid rgba(256, 256, 256, 0.8);
   border-width: 2px 4px;
 }
-
 .pressable:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
+
+.main-list-item {
+  margin-bottom: 32px;
+  padding: 20px 20px
+};
 
 .primary {
   /* padding: 16px 20px; */
