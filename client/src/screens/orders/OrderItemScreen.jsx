@@ -1,5 +1,7 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { SCREENS } from '../../constants/router';
 import { useOrders } from '../../adapters/primary/useOrders';
 import { createOrder, updateOrder } from '../../domain/InventoryService';
@@ -11,6 +13,7 @@ const DEFAULT_FORM_STATE = {
 
 export const OrderItemScreen = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const params = useParams();
   const { orders } = useOrders();
   const currentOrder = orders.find(order => order.id === params.id);
@@ -94,27 +97,27 @@ export const OrderItemScreen = () => {
 
   // Disable add article button if there is an empty article to avoid duplicates issues
   const disableButtons = formState.articles.some((article) => article.id === '' || article.quantity === '0');
-  const addArticleButtonLabel = disableButtons ? 'Please fill the empty article' : 'Add Article';
+  const addArticleButtonLabel = disableButtons ? t('articles.pleaseFill') : t('articles.add');
 
-  const screenTitle = isNewOrder ? 'New Order' : SCREENS.ORDER_ITEM.NAME;
+  const screenTitle = isNewOrder ? t('orders.new') : t(`screens.${SCREENS.ORDER_ITEM.NAME}`);
 
-  const submitButtonLabel = isNewOrder ? 'CREATE ORDER' : 'UPDATE ORDER';
+  const submitButtonLabel = isNewOrder ? t('orders.button.create') : t('orders.button.update');
   const disableSubmitButton = disableButtons || formState.articles.length < 1;
   const submitAction = isNewOrder ? handleCreateOrder : handleUpdateOrder;
 
   const renderOrderForm = () => (
     <form onSubmit={submitAction}>
       {!isNewOrder && [
-        <h3>ID</h3>,
+        <h4>{t('orders.subtitle.id')}</h4>,
         <input className="w20" type="text" name="id" value={formState.id} readOnly disabled/>,
         <br/>
       ]}
       
 
-      <h4>Articles:</h4>
+      <h4>{t('orders.subtitle.articles')}</h4>
       <button
         type="button"
-        className="secondary"
+        className="secondary w45"
         onClick={handleAddArticle}
         disabled={disableButtons}
       >
@@ -128,7 +131,7 @@ export const OrderItemScreen = () => {
             className={`order-item ${(article.id === '' || article.quantity === 0) ? 'warning' : ''}`}
           >
             <label className='w45'>
-              Article ID:
+              {t('articles.formLabel.id')}
               <input
                 className={article.id === '' ? 'warning' : ''}
                 type="number"
@@ -138,7 +141,7 @@ export const OrderItemScreen = () => {
               />
             </label>
             <label className='w45'>
-              Quantity:
+              {t('articles.formLabel.quantity')}
               <input
                 className={!article.quantity || article.quantity === '0' ? 'warning' : ''}
                 type="number"
@@ -158,7 +161,9 @@ export const OrderItemScreen = () => {
 
   return (
     <div className='screen'>
-      <Link to={SCREENS.ORDERS.PATH}>Back to {SCREENS.ORDERS.NAME}</Link>
+      <Link to={SCREENS.ORDERS.PATH}>
+        {`${t('navigation.backTo')} ${t(`screens.${SCREENS.ORDERS.NAME}`)}`}
+      </Link>
 
       <h2>{screenTitle}</h2>
       {renderOrderForm()}

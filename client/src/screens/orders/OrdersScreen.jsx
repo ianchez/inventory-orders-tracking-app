@@ -1,18 +1,18 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { SCREENS } from '../../constants/router';
 import { OrdersList } from "../../components/OrdersList";
 import { routeBuilder } from '../../constants/router';
 
 export const OrdersScreen = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     <div className='screen'>
-        <Link
-          className='link'
-          to={SCREENS.HOME.PATH}
-        >
-          Back to {SCREENS.HOME.NAME}
+        <Link to={SCREENS.HOME.PATH}>
+          {`${t('navigation.backTo')} ${t(`screens.${SCREENS.HOME.NAME}`)}`}
         </Link>
 
         <button
@@ -20,10 +20,10 @@ export const OrdersScreen = () => {
           style={{ marginTop: "2vw" }}
           onClick={() => navigate(routeBuilder.NEW_ORDER())}
         >
-          Create New Order
+          {t('orders.button.createNew')}
         </button>
 
-        <h2>{SCREENS.ORDERS.NAME}</h2>
+        <h2>{t(`screens.${SCREENS.ORDERS.NAME}`)}</h2>
         <OrdersList />
     </div>
   );

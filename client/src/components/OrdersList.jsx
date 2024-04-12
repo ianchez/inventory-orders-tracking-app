@@ -1,8 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { routeBuilder } from '../constants/router';
 import { useOrders } from '../adapters/primary/useOrders';
 
 export const OrdersList = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { orders } = useOrders();
 
@@ -18,13 +21,14 @@ export const OrdersList = () => {
           className='pressable'
           onClick={() => onClickHandler(order.id)}
         >
-          <h4>ID: {order.id}</h4>
-          <p>Articles:</p>
+          <h4>{t('orders.itemLabel.id')} {order.id}</h4>
+
+          <p>{t('orders.itemLabel.articles')}</p>
           <ul>
             {order.articles.map(article => (
               <li key={article.id} >
-                ID: {article.id}<br />
-                Quantity: {article.quantity}
+                {t('orders.itemLabel.id')} {article.id}<br />
+                {t('orders.itemLabel.quantity')} {article.quantity}
               </li>
             ))}
           </ul>

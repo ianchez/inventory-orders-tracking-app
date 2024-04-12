@@ -1,5 +1,7 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { SCREENS } from '../../constants/router';
 import { useArticles } from '../../adapters/primary/useArticles';
 import { createArticle, updateArticle } from '../../domain/InventoryService';
@@ -13,6 +15,7 @@ const DEFAULT_FORM_STATE = {
 };
 
 export const ArticleItemScreen = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const params = useParams();
   const { articles } = useArticles();
@@ -67,56 +70,87 @@ export const ArticleItemScreen = () => {
 
   const screenTitle =
     currentArticle
-      ? formState.name || 'Article'
+      ? formState.name || t('articles.title.singular')
       : isNewArticle
-        ? formState.name || 'New Article'
-        : 'Article not found';
+        ? formState.name || t('articles.title.new')
+        : t('articles.title.notFound');
 
   const submitButtonAction = currentArticle ? handleUpdateArticle : handleCreateArticle;
-  const submitButtonLabel = currentArticle ? 'UPDATE ARTICLE' : 'CREATE ARTICLE';
+  const submitButtonLabel = currentArticle ? t('articles.button.update') : t('articles.button.create');
   const disableSubmitButton =
     !formState.name ||
     formState.price === '0' ||
     formState.taxPercentage === '0';
 
   const subtitle = disableSubmitButton
-    ? 'Enter the missing details of the article:'
-    : 'Enter the details of the article:';
+    ? t('articles.subtitle.missingDetails')
+    : t('articles.subtitle.details');
 
   const renderArticleForm = () => (
     <form onSubmit={submitButtonAction}>
       <p>{subtitle}</p>
+
       {!isNewArticle && 
         <label>
-          ID: 
+          {t('articles.formLabel.id')}
           <input type="number" name="id" value={formState.id} onChange={handleChange} readOnly />
         </label>
       }
+
       <label>
-        Name: 
-        <input className={formState.name ? '' : 'warning'} type="text" name="name" value={formState.name} onChange={handleChange} />
+        {t('articles.formLabel.name')}
+        <input
+          className={formState.name ? '' : 'warning'}
+          type="text"
+          name="name"
+          value={formState.name}
+          onChange={handleChange}
+        />
       </label>
+
       <div style={{ display: 'flex', justifyContent: 'space-between', width: "100%" }}>
         <label className='w45'>
-          Price: 
-          <input className={formState.price === '0' ? 'warning' : ''} type="number" name="price" value={formState.price} onChange={handleChange} />
+          {t('articles.formLabel.price')}
+          <input
+            className={formState.price === '0' ? 'warning' : ''}
+            type="number"
+            name="price"
+            value={formState.price}
+            onChange={handleChange}
+          />
         </label>
         <label className='w45'>
-          Tax percentage: 
-          <input className={formState.taxPercentage === '0' ? 'warning' : ''} type="number" name="taxPercentage" value={formState.taxPercentage} onChange={handleChange} />
+          {t('articles.formLabel.taxPercentage')}
+          <input
+            className={formState.taxPercentage === '0' ? 'warning' : ''}
+            type="number"
+            name="taxPercentage"
+            value={formState.taxPercentage}
+            onChange={handleChange}
+          />
         </label>
       </div>
+
       <label>
-        Description:
-        <textarea name="description" value={formState.description} onChange={handleChange} />
+        {t('articles.formLabel.description')}
+        <textarea
+          name="description"
+          value={formState.description}
+          onChange={handleChange}
+        />
       </label>
-      <button type="submit" className='primary' disabled={disableSubmitButton}>{submitButtonLabel}</button>
+
+      <button type="submit" className='primary' disabled={disableSubmitButton}>
+        {submitButtonLabel}
+      </button>
     </form>
   );
 
   return (
     <div className='screen'>
-      <Link to={SCREENS.ARTICLES.PATH}>Back to {SCREENS.ARTICLES.NAME}</Link>
+      <Link to={SCREENS.ARTICLES.PATH}>
+        {`${t('navigation.backTo')} ${t(`screens.${SCREENS.ARTICLES.NAME}`)}`}
+      </Link>
 
       <h2>{screenTitle}</h2>
 
