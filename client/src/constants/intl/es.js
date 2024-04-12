@@ -11,8 +11,14 @@ const esDictionary = {
       id: 'ID:',
       name: 'Nombre:',
       price: 'Precio:',
+      unitPrice: 'Precio Unidad:',
       tax: 'Impuesto aplicable:',
       description: 'Descripción:',
+    },
+    formError: {
+      negativeQuantity: 'La cantidad no puede ser negativa',
+      negativeID: 'El ID no puede ser negativo',
+      notFound: 'Article not found',
     },
     formLabel: {
       id: 'ID Artículo:',
@@ -50,6 +56,10 @@ const esDictionary = {
       createNew: 'Crear Nuevo Pedido',
       update: 'ACTUALIZAR PEDIDO',
     },
+    formError: {
+      alreadyContainsArticle: 'El pedido ya contiene este artículo',
+      articleNotFound: 'Artículo no encontrado',
+    },
     itemLabel: {
       articles: 'Artículos:',
       articleID: 'ID Artículo:',
@@ -65,6 +75,7 @@ const esDictionary = {
       new: 'Nuevo Pedido',
       notFound: 'Pedido No Encontrado',
     },
+    total: 'Total Pedido:',
   },
   navigation: {
     backTo: 'Volver a',

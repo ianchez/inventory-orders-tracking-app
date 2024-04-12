@@ -19,7 +19,7 @@ export const ArticleItemScreen = () => {
 
   const screenTitle =
     currentArticle
-      ? articleName || t('articles.title.singular')
+      ? currentArticle.name || t('articles.title.singular')
       : isNewArticle
         ? articleName || t('articles.title.new')
         : t('articles.title.notFound');

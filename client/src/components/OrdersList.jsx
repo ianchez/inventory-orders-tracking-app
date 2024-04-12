@@ -24,14 +24,19 @@ export const OrdersList = () => {
           className='pressable main-list-item'
           onClick={() => onClickHandler(order.id)}
         >
-          <h4>{t('orders.itemLabel.id')} {order.id}</h4>
+          <h3>{t('orders.itemLabel.id')} {order.id}</h3>
 
           <p>{t('orders.itemLabel.articles')}</p>
           <ul>
             {order.articles.map(article => (
               <li key={article.id} >
-                {t('orders.itemLabel.id')} {article.id}<br />
-                {t('orders.itemLabel.quantity')} {article.quantity}
+                <p className='half-left'>
+                  {t('orders.itemLabel.id')} {article.id}
+                </p>
+                <p className='half-right'>
+                  {t('orders.itemLabel.quantity')} {article.quantity}
+                </p>
+                
               </li>
             ))}
           </ul>

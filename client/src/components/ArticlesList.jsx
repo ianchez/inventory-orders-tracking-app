@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { routeBuilder } from '../constants/router';
 import { InventoryContext } from '../context/inventory';
+import { formatPrice, formatTax } from '../utils/format';
 
 export const ArticlesList = () => {
   const { t } = useTranslation();
@@ -22,15 +23,26 @@ export const ArticlesList = () => {
           className='main-list-item pressable'
           onClick={() => onClickHandler(article.id)}
         >
-          <h4>{t('articles.itemLabel.id')} {article.id} | {article.name}</h4>
+          <h3 className='half-left'>
+            {t('articles.itemLabel.id')} {article.id}
+          </h3>
+          <h3 className='half-right'>
+            {article.name}
+          </h3>
 
-          {t('articles.itemLabel.price')} ${article.price} | {t('articles.itemLabel.tax')} {article.taxPercentage}%
-          <br/>
-          {t('articles.itemLabel.description')}<br/>
+          <p className='half-left'>
+            {t('articles.itemLabel.price')} {formatPrice(article.price)}
+          </p>
+          <p className='half-right'>
+            {t('articles.itemLabel.tax')} {formatTax(article.taxPercentage)}
+          </p>
           {!!article.description && 
-            <ul>
+          <p>
+            {t('articles.itemLabel.description')}
+            <ul style={{ marginTop: 4 }}>
               <li>{article.description}</li>
             </ul>
+          </p>
           }
         </li>
       ))}

@@ -11,8 +11,14 @@ const enDictionary = {
       id: 'ID:',
       name: 'Name:',
       price: 'Price:',
+      unitPrice: 'Unit Price:',
       tax: 'Tax:',
       description: 'Description:',
+    },
+    formError: {
+      negativeQuantity: 'Quantity cannot be negative',
+      negativeID: 'ID cannot be negative',
+      notFound: 'Article not found',
     },
     formLabel: {
       id: 'Article ID:',
@@ -50,12 +56,17 @@ const enDictionary = {
       createNew: 'Create New Order',
       update: 'UPDATE ORDER',
     },
+    formError: {
+      alreadyContainsArticle: 'Order already contains the article',
+      articleNotFound: 'Article not found',
+    },
     itemLabel: {
       articles: 'Articles:',
       articleID: 'Article ID:',
       id: 'ID:',
       quantity: 'Quantity:',
     },
+
     new: 'New Order',
     subtitle: {
       id: 'ID:',
@@ -65,6 +76,7 @@ const enDictionary = {
       new: 'New Order',
       notFound: 'Order Not Found',
     },
+    total: 'Order Total:',
   },
   navigation: {
     backTo: 'Back to',
