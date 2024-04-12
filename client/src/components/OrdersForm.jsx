@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { createOrder, updateOrder } from '../domain/InventoryService';
 import { SCREENS } from '../constants/router';
+import { ArticleInput } from './ArticleInput';
 
 const DEFAULT_FORM_STATE = {
   ID: '',
@@ -46,7 +47,7 @@ export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
 
   const handleChangeArticleQuantity = ({ id, quantity }) => {
     if (Number(quantity) < 0) {
-      return; // If it's negative, don't update the state
+      return;
     }
 
     const updatedArticles = formState.articles.map((article) => {
@@ -61,7 +62,7 @@ export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
 
   const handleChangeArticleId = ({ id, newId }) => {
     if (Number(newId) < 0) {
-      return; // If it's negative, don't update the state
+      return;
     }
 
     const foundArticle = formState.articles.find((article) => article.id === newId);
@@ -78,14 +79,29 @@ export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
   };
 
   // Disable add article button if there is an empty article to avoid duplicates issues
-  const disableButtons = formState.articles.some((article) => article.id === '' || article.quantity === '0');
+  const disableButtons = formState.articles.some((article) =>
+    article.id === '' ||
+    article.id === '0' ||
+    article.quantity === '' ||
+    article.quantity === '0'
+  );
+  const disableSubmitButton = disableButtons || formState.articles.length < 1;
+
   const addArticleButtonLabel = disableButtons ? t('articles.pleaseFill') : t('articles.add');
 
   const submitButtonLabel = isNewOrder ? t('orders.button.create') : t('orders.button.update');
-  const disableSubmitButton = disableButtons || formState.articles.length < 1;
 
   return (
     <form onSubmit={handleSubmitOrder}>
+      <button
+        type="submit"
+        className='primary'
+        disabled={disableSubmitButton}
+        style={{ marginBottom: '4px + 1.6vw' }}
+      >
+        {submitButtonLabel}
+      </button>
+      
       {!isNewOrder && [
         <h4>{t('orders.subtitle.id')}</h4>,
         <input className="w20" type="text" name="id" value={formState.id} readOnly disabled/>,
@@ -103,37 +119,14 @@ export const OrdersForm = ({currentOrder, isNewOrder = false}) => {
       </button>
 
       <ul className='w100'>
-        {formState.articles.map((article) => (
-          <li
-            key={article.id}
-            className={`order-item ${(article.id === '' || article.quantity === 0) ? 'warning' : ''}`}
-          >
-            <label className='w45'>
-              {t('articles.formLabel.id')}
-              <input
-                className={article.id === '' ? 'warning' : ''}
-                type="number"
-                name={`id-${article.id}`}
-                value={article.id}
-                onChange={(e) => handleChangeArticleId({ id: article.id, newId: e.target.value })}
-              />
-            </label>
-            <label className='w45'>
-              {t('articles.formLabel.quantity')}
-              <input
-                className={!article.quantity || article.quantity === '0' ? 'warning' : ''}
-                type="number"
-                name={`quantity-${article.id}`}
-                value={article.quantity}
-                onChange={(e) => handleChangeArticleQuantity({ id: article.id, quantity: e.target.value })}
-              />
-            </label>
-          </li>
-        ))}
+        {formState.articles.map((article) =>
+          <ArticleInput
+            article={article}
+            handleChangeId={handleChangeArticleId}
+            handleChangeQuantity={handleChangeArticleQuantity}
+          />
+        )}
       </ul>
-      <button type="submit" className='primary' disabled={disableSubmitButton}>
-        {submitButtonLabel}
-      </button>
     </form>
   );
 }
