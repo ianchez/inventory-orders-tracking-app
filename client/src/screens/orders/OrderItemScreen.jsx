@@ -1,14 +1,16 @@
+import { useContext } from 'react';
 import { useParams, Link} from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { InventoryContext } from '../../context/inventory';
 import { SCREENS } from '../../constants/router';
-import { useOrders } from '../../adapters/primary/useOrders';
 import { OrdersForm } from '../../components/OrdersForm';
 
 export const OrderItemScreen = () => {
   const { t } = useTranslation();
   const params = useParams();
-  const { orders } = useOrders();
+
+  const { orders } = useContext(InventoryContext);
   const currentOrder = orders.find(order => order.id === params.id);
   const isNewOrder = !currentOrder && params.id === 'new';
 

@@ -1,13 +1,16 @@
+
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { InventoryContext } from '../context/inventory';
 import { routeBuilder } from '../constants/router';
-import { useOrders } from '../adapters/primary/useOrders';
 
 export const OrdersList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { orders } = useOrders();
+
+  const { orders } = useContext(InventoryContext);
 
   const onClickHandler = (id) => {
     navigate(routeBuilder.ORDER(id));
@@ -18,7 +21,7 @@ export const OrdersList = () => {
       {orders.map(order => (
         <li
           key={order.id}
-          className='pressable'
+          className='pressable main-list-item'
           onClick={() => onClickHandler(order.id)}
         >
           <h4>{t('orders.itemLabel.id')} {order.id}</h4>

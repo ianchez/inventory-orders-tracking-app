@@ -1,13 +1,14 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { useArticles } from '../adapters/primary/useArticles';
 import { routeBuilder } from '../constants/router';
+import { InventoryContext } from '../context/inventory';
 
 export const ArticlesList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { articles } = useArticles();
+  const { articles } = useContext(InventoryContext);
 
   const onClickHandler = (id) => {
     navigate(routeBuilder.ARTICLE(id));
@@ -18,7 +19,7 @@ export const ArticlesList = () => {
       {articles.map(article => (
         <li
           key={article.id}
-          className='pressable'
+          className='main-list-item pressable'
           onClick={() => onClickHandler(article.id)}
         >
           <h4>{t('articles.itemLabel.id')} {article.id} | {article.name}</h4>
@@ -26,7 +27,11 @@ export const ArticlesList = () => {
           {t('articles.itemLabel.price')} ${article.price} | {t('articles.itemLabel.tax')} {article.taxPercentage}%
           <br/>
           {t('articles.itemLabel.description')}<br/>
-          <li>{article.description}</li>
+          {!!article.description && 
+            <ul>
+              <li>{article.description}</li>
+            </ul>
+          }
         </li>
       ))}
     </ul>
