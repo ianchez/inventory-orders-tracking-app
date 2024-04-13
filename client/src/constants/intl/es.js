@@ -76,6 +76,7 @@ const esDictionary = {
       notFound: 'Pedido No Encontrado',
     },
     total: 'Total Pedido:',
+    totalTax: 'Total con Impuesto:',
   },
   navigation: {
     backTo: 'Volver a',

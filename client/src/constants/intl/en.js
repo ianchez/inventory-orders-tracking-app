@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 const enDictionary = {
   articles: {
     add: 'Add New Article',
@@ -76,7 +78,8 @@ const enDictionary = {
       new: 'New Order',
       notFound: 'Order Not Found',
     },
-    total: 'Order Total:',
+    total: 'Total:',
+    totalTax: 'Total with Tax:',
   },
   navigation: {
     backTo: 'Back to',
