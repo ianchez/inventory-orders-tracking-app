@@ -3,8 +3,9 @@
 ## Installation
 1. Clone the repository
 2. Check you have installed Node.js in your machine, **nvm** is recommended to manage the Node.js versions
-  2.1 Check the [official documentation](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for more information
-  2.2 Once installed, run `nvm install` to install the Node.js version specified in the `.nvmrc` file
+    1. Check the [official documentation](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for more information
+    2. Once installed, run `nvm install` to install the Node.js version specified in the `.nvmrc` file
+
 3. Create a new `db.json` file in the **./server** folder with the following structure:
     ```json
     {
